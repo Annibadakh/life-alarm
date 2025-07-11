@@ -26,7 +26,7 @@ export function showTodayNotifications() {
   todayTasks.forEach((task) => {
     new Notification("Life Alarm 🔔", {
       body: `${task.title}: ${task.description}`,
-      
+      icon: "/alarmicon.png", // optional, add icon in public folder
     });
   });
 }

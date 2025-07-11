@@ -18,7 +18,7 @@ function App() {
     const lastNotified = localStorage.getItem("life_alarm_last_notified");
     const todayDate = new Date().toISOString().split("T")[0];
 
-    if (lastNotified !== todayDate) {
+    if (lastNotified == todayDate) {
       showTodayNotifications();
       localStorage.setItem("life_alarm_last_notified", todayDate);
     }
