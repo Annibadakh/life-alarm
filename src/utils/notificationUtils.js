@@ -23,10 +23,16 @@ export function showTodayNotifications() {
     return false;
   });
 
-  todayTasks.forEach((task) => {
-    new Notification("Life Alarm 🔔", {
-      body: `${task.title}: ${task.description}`,
-      icon: "/alarmicon.png", // optional, add icon in public folder
-    });
+  if (todayTasks.length === 0) return;
+
+  const body = [`📝 You have ${todayTasks.length} task${todayTasks.length !== 1 && "s"} today:\n`]
+    .concat(
+      todayTasks.map((task, index) => `${index + 1}. ${task.title} - ${task.description}`)
+    )
+    .join("\n");
+
+  new Notification("Life Alarm 🔔", {
+    body,
+    icon: "./alarmlogo.png",
   });
 }
